@@ -1,5 +1,11 @@
-postgres {
-    url = "jdbc:postgresql://127.0.0.1:5432/tradeagent"
-    user = "postgres"
-    password = "1QaZ2WsXl4n7g4"
-}
+ktor:
+  deployment:
+    port: 8081
+  application:
+    modules:
+      - agent.trade.ApplicationKt.module
+
+postgres:
+  url: "jdbc:postgresql://127.0.0.1:5432/tradeagent"
+  user: "postgres"
+  password: "1QaZ2WsXl7g4w3"

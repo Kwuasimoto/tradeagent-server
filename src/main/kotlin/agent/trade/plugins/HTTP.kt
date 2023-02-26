@@ -7,13 +7,16 @@ import io.ktor.server.application.*
 
 fun Application.configureHTTP() {
     install(CORS) {
-        allowMethod(HttpMethod.Options)
-        allowMethod(HttpMethod.Put)
-        allowMethod(HttpMethod.Delete)
-        allowMethod(HttpMethod.Patch)
+        allowMethod(HttpMethod.Get)
+        allowMethod(HttpMethod.Post)
         allowHeader(HttpHeaders.Authorization)
+        allowHeader(HttpHeaders.ContentType)
+        allowHeader(HttpHeaders.AccessControlAllowHeaders)
+        allowHeader(HttpHeaders.AccessControlAllowOrigin)
         allowHeader("MyCustomHeader")
-        anyHost() // @TODO: Don't do this in production if possible. Try to limit it.
+        allowHost("localhost:4200")
+        allowCredentials = true
+        allowSameOrigin = true
     }
     install(DefaultHeaders) {
         header("X-Engine", "Ktor") // will send this header with each response
