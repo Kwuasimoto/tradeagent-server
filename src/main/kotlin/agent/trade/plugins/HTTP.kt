@@ -13,6 +13,7 @@ fun Application.configureHTTP() {
         allowHeader(HttpHeaders.ContentType)
         allowHeader(HttpHeaders.AccessControlAllowHeaders)
         allowHeader(HttpHeaders.AccessControlAllowOrigin)
+        allowHeader(HttpHeaders.Upgrade)
         allowHeader("MyCustomHeader")
         allowHost("localhost:4200")
         allowCredentials = true
@@ -21,4 +22,5 @@ fun Application.configureHTTP() {
     install(DefaultHeaders) {
         header("X-Engine", "Ktor") // will send this header with each response
     }
+
 }

@@ -3,7 +3,7 @@ val kotlinVersion: String by project
 val logbackVersion: String by project
 val postgresVersion: String by project
 val exposedVersion: String by project
-val LZ4Version: String by project
+val lz4Version: String by project
 
 
 plugins {
@@ -37,7 +37,7 @@ repositories {
 dependencies {
     implementation(files("src/libs/tws/JavaClient/TwsApi.jar"))
 
-    implementation("org.lz4:lz4-java:$LZ4Version")
+
     implementation("io.ktor:ktor-server-config-yaml:$ktorVersion")
     implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
     implementation("io.ktor:ktor-server-auth-jvm:$ktorVersion")
@@ -57,6 +57,8 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
+
+    implementation("org.lz4:lz4-java:$lz4Version")
 
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
 
