@@ -5,7 +5,7 @@ val postgresVersion: String by project
 val exposedVersion: String by project
 val lz4Version: String by project
 val seleniumVersion: String by project
-
+val jacksonVersion: String by project
 
 plugins {
     kotlin("jvm") version "1.8.10"
@@ -50,6 +50,8 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm:$ktorVersion")
     implementation("io.ktor:ktor-serialization-gson-jvm:$ktorVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktorVersion")
+    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+
     implementation("io.ktor:ktor-network-tls-jvm:$ktorVersion")
 
     implementation("org.postgresql:postgresql:$postgresVersion")

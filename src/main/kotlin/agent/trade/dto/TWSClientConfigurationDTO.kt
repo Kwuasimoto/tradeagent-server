@@ -6,6 +6,7 @@ import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
 import com.google.gson.stream.JsonWriter
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 
 enum class MarketClientProviders {
     TWS()
@@ -16,7 +17,7 @@ sealed interface ClientConfigurationRequestDTO {
     val clientID: Int?
     val host: String
     val port: Int
-    val type: Int
+    val configType: Int
 }
 
 class ClientConfigurationRequestDTOAdapter : TypeAdapter<ClientConfigurationRequestDTO>() {
@@ -36,7 +37,8 @@ class ClientConfigurationRequestDTOAdapter : TypeAdapter<ClientConfigurationRequ
             reader.nextNull()
             return null
         }
-        return gson.fromJson(reader, ClientConfigurationRequestDTO::class.java)
+        val jsonObject = gson.fromJson(reader, ClientConfigurationRequestDTO.serializer()::class.java) as Map<*, *>
+        return Json.decodeFromString(ClientConfigurationRequestDTO.serializer(), gson.toJson(jsonObject))
     }
 }
 
@@ -45,9 +47,9 @@ data class TWSClientConfigurationRequestDTO(
     override val clientID: Int,
     override val host: String,
     override val port: Int,
-    override val type: Int
+    override val configType: Int
 ) : ClientConfigurationRequestDTO {
     constructor(request: ClientConfigurationRequestDTO) :
-            this(request.clientID!!, request.host, request.port, request.type) {
+            this(request.clientID!!, request.host, request.port, request.configType) {
     }
 }

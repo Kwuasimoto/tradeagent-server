@@ -61,7 +61,7 @@ fun Application.configureClientRouting() {
             val request = call.receive<ClientConfigurationRequestDTO>()
 
             /* Infer the data type based on the type passed in the request  */
-            when (MarketClientProviders.values().getOrNull(request.type)) {
+            when (MarketClientProviders.values().getOrNull(request.configType.toInt())) {
                 MarketClientProviders.TWS -> {
                     /* Save client configuration to specific table based on ordinal */
                     val data = TWSClientConfigurationRequestDTO(request)
