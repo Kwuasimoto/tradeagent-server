@@ -4,6 +4,7 @@ val logbackVersion: String by project
 val postgresVersion: String by project
 val exposedVersion: String by project
 val lz4Version: String by project
+val seleniumVersion: String by project
 
 
 plugins {
@@ -52,6 +53,8 @@ dependencies {
     implementation("io.ktor:ktor-network-tls-jvm:$ktorVersion")
 
     implementation("org.postgresql:postgresql:$postgresVersion")
+
+    implementation("org.seleniumhq.selenium:selenium-java:$seleniumVersion")
 
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")

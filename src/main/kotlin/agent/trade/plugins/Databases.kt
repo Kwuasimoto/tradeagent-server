@@ -1,6 +1,8 @@
 package agent.trade.plugins
 
 import agent.trade.models.UserTable
+import agent.trade.models.migrateImagesTable
+import agent.trade.models.migrateTWSClientConfigurationTable
 import agent.trade.models.migrateUserTable
 import io.ktor.http.*
 import io.ktor.server.request.*
@@ -15,12 +17,15 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Application.runMigrations() {
     migrateUserTable()
+    migrateImagesTable()
+    migrateTWSClientConfigurationTable()
 }
 
 fun Application.configureDatabases() {
     val database = connectToPostgres()
     log.debug("Established Database Connection: ${database.config.javaClass}")
-    initDatabase()
+    // Uncomment to run migrations
+    // initDatabase()
     runMigrations()
 }
 

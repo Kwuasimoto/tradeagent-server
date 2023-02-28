@@ -14,6 +14,11 @@ fun Application.configureHTTP() {
         allowHeader(HttpHeaders.AccessControlAllowHeaders)
         allowHeader(HttpHeaders.AccessControlAllowOrigin)
         allowHeader(HttpHeaders.Upgrade)
+        allowHeader(HttpHeaders.SecWebSocketAccept)
+        allowHeader(HttpHeaders.SecWebSocketKey)
+        allowHeader(HttpHeaders.SecWebSocketVersion)
+        allowHeader(HttpHeaders.SecWebSocketExtensions)
+        allowHeader(HttpHeaders.SecWebSocketProtocol)
         allowHeader("MyCustomHeader")
         allowHost("localhost:4200")
         allowCredentials = true

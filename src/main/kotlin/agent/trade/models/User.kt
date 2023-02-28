@@ -32,7 +32,7 @@ data class User(
         avatar = "undefined",
     )
 
-    fun getId(): String {
+    fun getID(): String {
         return this.id;
     }
 
@@ -61,8 +61,12 @@ data class User(
     }
 }
 
+fun UserTable.rowToUser(row: ResultRow): User {
+    return User(row)
+}
+
 object UserTable : Table("users") {
-    private val id = varchar("id", 36)
+    val id = varchar("id", 36)
     private val fullName = varchar("full_name", 128).nullable()
     private val username = varchar("username", 64)
     private val avatar = text("avatar").nullable()
