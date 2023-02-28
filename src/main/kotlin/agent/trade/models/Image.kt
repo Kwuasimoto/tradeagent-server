@@ -17,9 +17,9 @@ object ImagesTable : Table() {
 
 fun Application.migrateImagesTable() {
     // Migrate the table changes to the database
-    transaction {
-        SchemaUtils.createMissingTablesAndColumns(ImagesTable)
-    }
+
+    SchemaUtils.createMissingTablesAndColumns(ImagesTable)
+
 }
 
 // Insert an image into the database

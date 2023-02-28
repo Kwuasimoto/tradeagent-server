@@ -16,9 +16,11 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Application.runMigrations() {
-    migrateUserTable()
-    migrateImagesTable()
-    migrateTWSClientConfigurationTable()
+    transaction {
+        migrateTWSClientConfigurationTable()
+        migrateUserTable()
+        migrateImagesTable()
+    }
 }
 
 fun Application.configureDatabases() {

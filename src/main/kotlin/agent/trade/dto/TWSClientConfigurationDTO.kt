@@ -6,7 +6,8 @@ enum class MarketClientProviders {
     TWS()
 }
 
-interface ClientConfigurationRequestDTO {
+@Serializable
+sealed interface ClientConfigurationRequestDTO {
     val clientID: Int?
     val host: String
     val port: Int

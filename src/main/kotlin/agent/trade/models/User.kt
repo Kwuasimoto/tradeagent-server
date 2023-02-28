@@ -98,9 +98,9 @@ object UserTable : Table("users") {
 
 fun Application.migrateUserTable() {
     // Migrate the table changes to the database
-    transaction {
-        SchemaUtils.createMissingTablesAndColumns(UserTable)
-    }
+
+    SchemaUtils.createMissingTablesAndColumns(UserTable)
+
 }
 
 fun Application.encryptPassword(password: String): String {

@@ -92,9 +92,7 @@ object TWSClientConfigurationTable : Table("tws_client_configurations") {
 
 fun Application.migrateTWSClientConfigurationTable() {
     // Migrate the table changes to the database
-    transaction {
-        SchemaUtils.createMissingTablesAndColumns(TWSClientConfigurationTable)
-    }
+    SchemaUtils.createMissingTablesAndColumns(TWSClientConfigurationTable)
 }
 
 val queryTWSClientConfigUserInnerJoin: Pair<User, TWSClientConfiguration>? =
